@@ -41,7 +41,8 @@ public class GameTest {
 
         Assertions.assertEquals(expected, actuale);
     }
-    //Проверка метода регистрации игроков, если список не пуст и игрок зарегестрирован
+
+    //Проверка метода регистрации игроков, если список не пуст и игрок зарегистрирован
     @Test
     public void shouldBeRegisteredIfListNotEmptyAndPlayerRegistered() {
         Game game = new Game();
@@ -57,7 +58,7 @@ public class GameTest {
         Assertions.assertEquals(expected, actuale);
     }
 
-    //Метод соревнования: Если первый игрок не зарегестрирован
+    //Метод соревнования: Если первый игрок не зарегистрирован
     @Test
     public void shouldExceptionIfFirstPlayerNotRegistered() {
         Game game = new Game();
@@ -65,11 +66,11 @@ public class GameTest {
         game.register(player2);
 
         Assertions.assertThrows(NotRegisteredException.class, () -> {
-            game.round("Алексей","Николай");
+            game.round("Алексей", "Николай");
         });
     }
 
-    //Метод соревнования: Если второй игрок не зарегестрирован <--- не покрыта ветка
+    //Метод соревнования: Если второй игрок не зарегистрирован
     @Test
     public void shouldExceptionIfSecondPlayerNotRegistered() {
         Game game = new Game();
@@ -77,21 +78,21 @@ public class GameTest {
         game.register(player1);
 
         Assertions.assertThrows(NotRegisteredException.class, () -> {
-            game.round("Алексей","Николай");
+            game.round("Алексей", "Николай");
         });
     }
 
-    //Метод соревнования: Если обы игрока не зарегестрированы
+    //Метод соревнования: Если обы игрока не зарегистрированы
     @Test
     public void shouldExceptionIfBothPlayersNotRegistered() {
         Game game = new Game();
 
         Assertions.assertThrows(NotRegisteredException.class, () -> {
-            game.round("Алексей","Николай");
+            game.round("Алексей", "Николай");
         });
     }
 
-    //Метод соревнования: Если обы игрока зарегестрированы, выигрывает 1 игрок
+    //Метод соревнования: Если обы игрока зарегистрированы, выигрывает 1 игрок
     @Test
     public void shouldExceptionIfBothPlayersRegisteredAndFirstPlayerWin() {
         Game game = new Game();
@@ -105,7 +106,7 @@ public class GameTest {
         Assertions.assertEquals(expected, actuale);
     }
 
-    //Метод соревнования: Если обы игрока зарегестрированы, выигрывает 2 игрок
+    //Метод соревнования: Если обы игрока зарегистрированы, выигрывает 2 игрок
     @Test
     public void shouldExceptionIfBothPlayersRegisteredAndSecondPlayerWin() {
         Game game = new Game();
@@ -119,7 +120,7 @@ public class GameTest {
         Assertions.assertEquals(expected, actuale);
     }
 
-    //Метод соревнования: Если обы игрока зарегестрированы, ничья
+    //Метод соревнования: Если обы игрока зарегистрированы, ничья
     @Test
     public void shouldExceptionIfBothPlayersRegisteredAndDraw() {
         Game game = new Game();

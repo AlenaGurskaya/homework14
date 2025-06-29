@@ -17,18 +17,23 @@ public class Game {
 
     //Метод соревнования между двумя игроками
     public int round(String playerName1, String playerName2) throws NotRegisteredException {
-        //Проверка на регистрацию игрока
-        if ((findByName(playerName1) == null) || (findByName(playerName2) == null)) {
-            if (findByName(playerName1) == null) {
-                throw new NotRegisteredException("Игрок " + playerName1 + " не зарегестирован");
-            }
-            if (findByName(playerName2) == null) {
-                throw new NotRegisteredException("Игрок " + playerName2 + " не зарегестирован");
-            }
-        }
-        //Метод должен возвращать одно число — 0 в случае ничьи, 1 в случае победы первого игрока и 2 в случае победы второго игрока.
         Player player1 = findByName(playerName1);
         Player player2 = findByName(playerName2);
+
+        //Проверка на регистрацию игрока
+        if (player1 == null && player2 == null) {
+            throw new NotRegisteredException("Оба игрока не зарегистированы");
+        }
+
+        if (player1 == null) { //Если первый игрок незарег, то выкинуть исключение
+            throw new NotRegisteredException("Игрок " + playerName1 + " не зарегистирован");
+        }
+
+        if (player2 == null) { //Если второй игрок незарег, то выкинуть исключение
+            throw new NotRegisteredException("Игрок " + playerName2 + " не зарегистирован");
+        }
+
+        //Метод должен возвращать одно число — 0 в случае ничьи, 1 в случае победы первого игрока и 2 в случае победы второго игрока.
         int strength1 = player1.getStrength();
         int strength2 = player2.getStrength();
 
